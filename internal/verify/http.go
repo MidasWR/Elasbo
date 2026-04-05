@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/midaswr/elsabo/internal/config"
+	"github.com/MidasWR/Elasbo/internal/config"
 )
 
 // Result of an HTTP check.

@@ -2,8 +2,8 @@
 
 ## What was done
 
-- Go module `github.com/midaswr/elsabo` with a Bubble Tea TUI, FastPanel `mogwai sites list` parser, cloak vault (`manifest.json` + `files/`), SFTP-based replace with HTTP verify and rollback, YAML config with domain tags.
-- Makefile + GoReleaser + GitHub Actions workflow for tag-driven releases to `github.com/midaswr/elsabo`.
+- Go module `github.com/MidasWR/Elasbo` with a Bubble Tea TUI, FastPanel `mogwai sites list` parser, cloak vault (`manifest.json` + `files/`), SFTP-based replace with HTTP verify and rollback, YAML config with domain tags.
+- Makefile + GoReleaser + GitHub Actions workflow for tag-driven releases to `github.com/MidasWR/Elasbo`.
 - Unit tests for mogwai parsing (fixed `strings.TrimRight` argument order bug), HTTP stub detection, and replace rollback paths.
 
 ## Why these choices

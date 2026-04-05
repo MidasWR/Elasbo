@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/midaswr/elsabo/internal/config"
+	"github.com/MidasWR/Elasbo/internal/config"
 )
 
 func TestCheckURL_stubNginx(t *testing.T) {

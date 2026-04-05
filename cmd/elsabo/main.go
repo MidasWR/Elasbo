@@ -7,9 +7,9 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 
-	"github.com/midaswr/elsabo/internal/cloaks"
-	"github.com/midaswr/elsabo/internal/config"
-	"github.com/midaswr/elsabo/internal/tui"
+	"github.com/MidasWR/Elasbo/internal/cloaks"
+	"github.com/MidasWR/Elasbo/internal/config"
+	"github.com/MidasWR/Elasbo/internal/tui"
 )
 
 func main() {

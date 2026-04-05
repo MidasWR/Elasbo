@@ -7,7 +7,7 @@ import (
 	"github.com/charmbracelet/bubbles/textarea"
 	tea "github.com/charmbracelet/bubbletea"
 
-	"github.com/midaswr/elsabo/internal/cloaks"
+	"github.com/MidasWR/Elasbo/internal/cloaks"
 )
 
 func newCloakCodeTextArea() textarea.Model {

@@ -79,7 +79,7 @@ func Defaults() Config {
 		DomainTags:    map[string][]string{},
 		Verify: VerifyConfig{
 			Timeout:      25 * time.Second,
-			UserAgent:    "Mozilla/5.0 (compatible; Elsabo/1.0; +https://github.com/midaswr/elsabo)",
+			UserAgent:    "Mozilla/5.0 (compatible; Elsabo/1.0; +https://github.com/MidasWR/Elasbo)",
 			MinBodyBytes: 80,
 			MaxRedirects: 5,
 			TryWWW:       true,

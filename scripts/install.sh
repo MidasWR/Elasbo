@@ -3,11 +3,11 @@
 # Публичный API релизов — токен GitHub не нужен.
 #
 # Установка:
-#   curl -fsSL https://raw.githubusercontent.com/midaswr/elsabo/main/scripts/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/MidasWR/Elasbo/main/scripts/install.sh | bash
 #   PREFIX=~/.local/bin curl -fsSL ... | bash
 #   curl -fsSL ... | sudo PREFIX=/usr/local/bin bash
 # Установка и сразу запуск TUI:
-#   curl -fsSL https://raw.githubusercontent.com/midaswr/elsabo/main/scripts/install.sh | bash -s -- --run
+#   curl -fsSL https://raw.githubusercontent.com/MidasWR/Elasbo/main/scripts/install.sh | bash -s -- --run
 
 set -euo pipefail
 
@@ -18,7 +18,7 @@ for _arg in "$@"; do
 	esac
 done
 
-REPO="midaswr/elsabo"
+REPO="MidasWR/Elasbo"
 DEFAULT_PREFIX="${HOME}/.local/bin"
 PREFIX="${PREFIX:-$DEFAULT_PREFIX}"
 

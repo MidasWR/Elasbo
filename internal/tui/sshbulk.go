@@ -6,7 +6,7 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/bubbles/textarea"
 
-	"github.com/midaswr/elsabo/internal/config"
+	"github.com/MidasWR/Elasbo/internal/config"
 )
 
 func (m *Model) openSSHBulkEditor() {

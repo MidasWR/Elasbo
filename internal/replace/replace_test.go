@@ -6,8 +6,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/midaswr/elsabo/internal/config"
-	"github.com/midaswr/elsabo/internal/fastpanel"
+	"github.com/MidasWR/Elasbo/internal/config"
+	"github.com/MidasWR/Elasbo/internal/fastpanel"
 )
 
 type memRemote struct {

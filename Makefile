@@ -1,4 +1,4 @@
-.PHONY: build test tidy download tools snapshot release release-upload ensure-release-tag
+.PHONY: build test tidy download tools snapshot release release-upload ensure-release-tag ensure-clean-git
 
 BINARY := elsabo
 GO     ?= go
@@ -29,13 +29,26 @@ $(GORELEASER):
 
 tools: $(GORELEASER)
 
-# GoReleaser (не --snapshot) требует тег v* ровно на HEAD
+# Полноценный release (не --snapshot) требует чистого git: иначе версия в артефактах не совпадает с деревом
+ensure-clean-git:
+	@test -z "$$(git status --porcelain 2>/dev/null)" || { \
+		echo "GoReleaser: сначала закоммитьте всё (иначе dirty). Порядок: коммит → тег на этот коммит → push тега → make release-upload."; \
+		echo "  git add -A && git commit -m \"chore: release\""; \
+		echo "Если тег вы уже пушили БЕЗ этого коммита — сдвиньте тег (см. ensure-release-tag) или возьмите новую версию (v0.1.2)."; \
+		echo ""; \
+		git status -s; \
+		exit 1; \
+	}
+
+# GoReleaser (не --snapshot) требует тег v* ровно на HEAD (после коммита)
 ensure-release-tag:
 	@git describe --tags --match 'v*' --exact-match HEAD >/dev/null 2>&1 || { \
-		echo "GoReleaser: на текущем коммите нет тега вида v0.1.0."; \
-		echo "Создайте тег на HEAD и отправьте на origin, затем: make release-upload"; \
-		echo "  git tag v0.1.0"; \
-		echo "  git push origin v0.1.0"; \
+		echo "GoReleaser: на текущем коммите (HEAD) нет тега v* — часто потому что после git commit вы забыли сдвинуть тег."; \
+		echo "Проверка: git rev-parse HEAD  и  git rev-parse v0.1.1 — должны совпасть."; \
+		echo "Сдвиг уже запушенного тега (осторожно, если кто-то уже скачал релиз):"; \
+		echo "  git tag -d v0.1.1 && git push origin :refs/tags/v0.1.1"; \
+		echo "  git tag v0.1.1 && git push origin v0.1.1"; \
+		echo "Или новый тег: git tag v0.1.2 && git push origin v0.1.2"; \
 		exit 1; \
 	}
 
@@ -50,11 +63,12 @@ ifeq ($(strip $(GITHUB_TOKEN)),)
 	@echo '>>> Без GITHUB_TOKEN — локальный snapshot в dist/. Публикация: gh auth login && make release-upload'
 	$(GORELEASER) release --snapshot --clean
 else
+	@$(MAKE) --no-print-directory ensure-clean-git
 	@$(MAKE) --no-print-directory ensure-release-tag
 	$(GORELEASER) release --clean
 endif
 
-release-upload: $(GORELEASER) download tidy test ensure-release-tag
+release-upload: $(GORELEASER) download tidy test ensure-clean-git ensure-release-tag
 	@set -e; \
 	TOKEN="$(GITHUB_TOKEN)"; \
 	if [ -z "$$TOKEN" ] && command -v gh >/dev/null 2>&1; then \

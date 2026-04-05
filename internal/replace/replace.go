@@ -10,9 +10,9 @@ import (
 
 	"github.com/pkg/sftp"
 
-	"github.com/midaswr/elsabo/internal/config"
-	"github.com/midaswr/elsabo/internal/fastpanel"
-	"github.com/midaswr/elsabo/internal/verify"
+	"github.com/MidasWR/Elasbo/internal/config"
+	"github.com/MidasWR/Elasbo/internal/fastpanel"
+	"github.com/MidasWR/Elasbo/internal/verify"
 )
 
 // RemoteFiles abstracts SFTP operations (implemented by sshutil.SFTP, or fakes in tests).

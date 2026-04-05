@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/midaswr/elsabo/internal/sshutil"
+	"github.com/MidasWR/Elasbo/internal/sshutil"
 )
 
 // FetchSites runs mogwai on the remote via SSH and parses the result.

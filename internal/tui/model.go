@@ -12,11 +12,11 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 
-	"github.com/midaswr/elsabo/internal/cloaks"
-	"github.com/midaswr/elsabo/internal/config"
-	"github.com/midaswr/elsabo/internal/fastpanel"
-	"github.com/midaswr/elsabo/internal/replace"
-	"github.com/midaswr/elsabo/internal/sshutil"
+	"github.com/MidasWR/Elasbo/internal/cloaks"
+	"github.com/MidasWR/Elasbo/internal/config"
+	"github.com/MidasWR/Elasbo/internal/fastpanel"
+	"github.com/MidasWR/Elasbo/internal/replace"
+	"github.com/MidasWR/Elasbo/internal/sshutil"
 )
 
 type screen int
