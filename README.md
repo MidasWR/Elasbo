@@ -222,6 +222,13 @@ make release-upload
 
 Перед публикацией GitHub Release **не должно быть незакоммиченных изменений** (`git status` пустой): иначе GoReleaser завершится с `git is in a dirty state`. Сначала `git add -A && git commit …`, при необходимости **новый тег** на этом коммите (`v0.1.1`), затем `make release-upload`. Локально это проверяет цель `ensure-clean-git`.
 
+**Если `403 Resource not accessible by personal access token` при `release-upload`:** токен не имеет прав на создание релизов в `MidasWR/Elasbo`.
+
+- **Classic PAT:** включите scope **`repo`** (приватный репозиторий) или минимум **`public_repo`**, если репозиторий публичный; убедитесь, что аккаунт токена может пушить в репозиторий.
+- **Fine-grained PAT:** выберите репозиторий **Elasbo**, разрешение **Contents → Read and write** (релизы и вложения идут через Contents API).
+- Организация с **SAML SSO:** в настройках токена нажмите **Configure SSO** / авторизуйте для организации **MidasWR**.
+- Проще: **`gh auth login`** с доступом к репозиторию и затем `make release-upload` (Makefile подставит `gh auth token`).
+
 CI: push тега `v1.2.3` запускает [`.github/workflows/release.yml`](.github/workflows/release.yml) с `GITHUB_TOKEN` репозитория.
 
 ---
