@@ -1,0 +1,42 @@
+version: 2
+
+project_name: elsabo
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: elsabo
+    main: ./cmd/elsabo
+    binary: elsabo
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w
+
+archives:
+  - id: targz
+    formats: [tar.gz]
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+
+checksum:
+  name_template: "checksums.txt"
+  algorithm: sha256
+
+changelog:
+  sort: asc
+  use: github
+
+release:
+  github:
+    owner: midaswr
+    name: elsabo
